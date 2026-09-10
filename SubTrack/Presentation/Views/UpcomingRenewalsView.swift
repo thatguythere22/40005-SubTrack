@@ -29,9 +29,19 @@ struct UpcomingRenewalsView: View {
                     .padding(.horizontal, 18)
                     Spacer()
                 } else {
-                    List(viewModel.renewals) { subscription in
-                        SubscriptionRow(subscription: subscription, showDaysUntilRenewal: true)
-                            .listRowBackground(Color(.secondarySystemBackground))
+                    List {
+                        Section {
+                            ForEach(viewModel.renewals) { subscription in
+                                SubscriptionRow(
+                                    subscription: subscription,
+                                    showDaysUntilRenewal: true
+                                )
+                                .listRowBackground(Color(.secondarySystemBackground))
+                            }
+                            .onDelete(perform: viewModel.removeSubscriptions)
+                        } footer: {
+                            Text("Removing a subscription from SubTrack does not cancel the subscription with its provider.")
+                        }
                     }
                     .listStyle(.insetGrouped)
                 }

@@ -26,7 +26,8 @@ final class DependencyContainer {
     @MainActor
     func makeUpcomingRenewalsViewModel() -> UpcomingRenewalsViewModel {
         UpcomingRenewalsViewModel(
-            upcomingRenewalsUseCase: GetUpcomingRenewalsUseCase(repository: subscriptionRepository)
+            upcomingRenewalsUseCase: GetUpcomingRenewalsUseCase(repository: subscriptionRepository),
+            removeSubscriptionUseCase: RemoveSubscriptionUseCase(repository: subscriptionRepository)
         )
     }
 
