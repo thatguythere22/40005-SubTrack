@@ -52,7 +52,7 @@ struct UpcomingRenewalsView: View {
             .onChange(of: viewModel.selectedWindow) { _, _ in
                 viewModel.refresh()
             }
-            .alert("Unable to Load Renewals", isPresented: errorAlertBinding) {
+            .alert("Unable to Remove Subscription", isPresented: errorAlertBinding) {
                 Button("OK", role: .cancel) { viewModel.errorMessage = nil }
             } message: {
                 Text(viewModel.errorMessage ?? "")
